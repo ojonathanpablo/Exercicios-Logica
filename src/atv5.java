@@ -1,37 +1,42 @@
 import java.util.Scanner;
 public class atv5 {
   public static void main(String[] args) {
-    Scanner entrada = new Scanner(System.in);
-    int andar[][] = new int [4][3];
-    String A,Q = "ocupado" ;
-    String opcao;
+   Scanner entrada = new Scanner(System.in); 
 
-    
-do {
-    for ( A=0; A <=4; A++) {
-        System.out.println("Informe o andar e quarto:");
-        System.out.println("Andar: ");
-        andar[A][Q] = entrada.nextInt();
-        for (Q=0; Q<=3; Q++){
-        System.out.println("Quarto: ");
-        andar[A][Q] = entrada.nextInt();
-        }
-       
+
+    char opcao;
+    String ocupacao [][] = new String[4][3];
+    int andar, quarto;
+
+    for(int i=0; i<4;i++){
+      for (int j = 0; j < 3; j++) {
+          ocupacao[i][j] = "Desocupado";
+      }
     }
 
+    do {
+      System.out.println("Informe andar é quarto:");
 
-    System.out.println("Deseja continuar S/N");
-    opcao = entrada.nextLine();
-    
-} while (opcao.equals("S"));
+      System.out.print("Digite o andar:");
+      andar = entrada.nextInt();
 
-for (A = 0; A <= 4; A++){
-    System.out.print((A+1) + "ª Andar");
-    System.out.println(" ");
-    for(Q=0; Q<= 3; Q++){
-        System.out.println(andar[A][Q]);
+      System.out.print("Digite o quarto");
+      quarto = entrada.nextInt();
+
+      ocupacao[andar - 1][quarto - 1] = "Ocupado";
+      
+      System.out.println("Deseja infroma outra ocupacao?: s/n ");
+      opcao = entrada.next().charAt(0);
+
+
+    } while (opcao != 'N');
+
+    for (int i = 0; i < 4; i++) {
+      System.out.println( (i+1) +" Andar");
+
+      for (int j = 0; j < 3; j++) {
+          System.out.println("- Quarto "+(j+1) + " " + ocupacao[i][j]);
+      }
     }
-
-  }
 }
 }
